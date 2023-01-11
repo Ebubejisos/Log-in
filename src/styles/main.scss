@@ -1,0 +1,222 @@
+@import '_coolColors';
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/Tillana-Regular.ttf') format('Woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  background-color: $black;
+}
+button {
+  border: none;
+  padding: 3px;
+  text-align: center;
+}
+#container{
+  background-color: rgb(240, 128, 178);
+  background-image: url('../images/software-developer.jpg');
+  background-size: cover;
+  width: 100vw;
+  height: 100%;
+  color: rgb(254, 252, 252);
+  font-size: 20px;
+}
+
+@mixin flex($direction,$pixel){
+  display: flex;
+  flex-direction: $direction;
+  gap: $pixel;
+}
+
+.main {
+  align-items: center;
+  padding-top: 25vh;
+  text-align: center;
+  h1{
+    color: rgba(207, 74, 234, 0.933);
+    word-spacing: 30px;
+    letter-spacing: 3px;
+    transform: scale(1.2,1.2);
+  }
+  h3 {
+    font-family: 'MyFont', sans-serif;
+    margin-top: 20px;
+  }
+  p {
+    margin-top: 3rem;
+    color: #ffc45e;
+    font-style: oblique;
+    font-weight: bold;
+    word-spacing: 5px;
+  }
+}
+
+button#openForm {
+  background-color: $green;
+  border-radius: 10px;
+  color: $black;
+  margin-left: 8px;
+  &:hover {
+    color:$white;
+    cursor: pointer;
+    font-size: small;
+    background-color: lightgreen;
+  }
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(34, 67, 92, 0.57);
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.overlay > form {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%,-20%);
+  -ms-transform: translate(-50%,-20%);
+  text-align: center;
+  background-color: $blue;
+  padding: 20px 12px;
+  font-size: 20px;
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 50px 10px rgb(66, 65, 65);
+  @include flex(column,60px);
+  z-index: 2;
+  button {
+    border-radius: inherit;
+    background-color: $green;
+    color: $black;
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.99,0.99);
+    }
+  }
+}
+
+input {
+  border-radius: 5px;
+  border: 2px solid rgb(150, 150, 150);
+  max-width: 200px;
+  font-size: small;
+  font-weight: 300;
+  padding: 2px 4px;
+  color: black;
+  outline: none;
+  &:focus {
+    border: 2px solid $blue;
+    background-color: white;
+  }
+}
+
+
+.heading {
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: $white;
+  img {
+    margin-top: 4px;
+    width: 40px;
+    height: 40px;
+    background-color: inherit;
+  }
+}
+
+.input{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 200px;
+  background-color: $whiteTile;
+  border-radius: inherit;
+  padding-bottom: 10px;
+  div {
+    justify-self: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    @include flex(column, 3px);
+    width: 200px;
+  }
+  label {
+    text-transform: capitalize;
+    font-size: larger;
+    display: block;
+    text-align: left;
+  }
+}
+
+.pswdInp > img,
+.pswdConfirm > img {
+  width: 25px;
+  height: 25px;
+  align-self: flex-end;
+  transform: translate(-5px,-30px);
+  cursor: pointer;
+}
+span.error {
+  width: 100%;
+  color:rgb(255, 50, 43);
+  text-align: left;
+  font-size: 14px;
+}
+.pswdInp > span.error,
+.pswdConfirm > span.error{
+  transform: translateY(-30px);
+}
+
+// Utility Class
+.redBorder{
+  border: 2px solid red;
+  background-color: #ffbdcaf1;
+}
+.green {
+  background-color: #a3ffb4;
+}
+
+// Media queries
+@media screen and (max-width: 900px) {
+  form {
+    width: 90%;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .input{
+    grid-template-columns: 1fr;
+    background-color: #fabb4f;
+    div{
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+  }
+  label{
+    display: none;
+  }
+
+}
